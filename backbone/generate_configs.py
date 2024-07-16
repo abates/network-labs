@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 """Basic configuration generator for the lab."""
 
-import base64
-import hashlib
 import os
 import sys
 
@@ -20,6 +18,9 @@ template_str = """
 username {{ login.username }} privilege 15 secret {{ login.password }}
 {% endfor %}!
 hostname {{ hostname }}
+!
+vrf instance management
+   rd 1:1
 !{% for interface in interfaces %}
 interface {{ interface.name }}
     description "To {{ interface.destination }} {{ interface.destination_interface }}"
@@ -29,7 +30,13 @@ interface {{ interface.name }}
 interface Loopback0
    ip address {{ loopback.address }}
 !
+interface Management0
+   vrf management
+!
 ip routing
+no ip routing vrf management
+!
+ip route vrf management 0.0.0.0/0 172.20.20.1
 !
 router ospf 1
    router-id {{ router_id }}
@@ -97,7 +104,7 @@ class ConfigGenerator:
                         "destination_interface": interface_b,
                         "address": addresses[a],
                     }
-    
+
     def _write_device_config(self, device):
         config = {**self.devices[device]}
         interface_names = sorted(config["interfaces"].keys())
@@ -115,7 +122,7 @@ if __name__ == "__main__":
         not os.environ.get("NAUTOBOT_NAPALM_USERNAME", None)
         or not os.environ.get("NAUTOBOT_NAPALM_PASSWORD", None)
     ):
-        print("The lab requires that both NAUTOBOT_NAPALM_USERNAME and NAUTOBOT_NAPALM_PASSWORD are set in the creds.env file")
+        print("The lab requires that both NAUTOBOT_NAPALM_USERNAME and NAUTOBOT_NAPALM_PASSWORD are set in the environment")
         exit(1)
 
 

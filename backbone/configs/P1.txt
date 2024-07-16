@@ -4,6 +4,9 @@ username nautobot privilege 15 secret nautobot
 !
 hostname P1
 !
+vrf instance management
+   rd 1:1
+!
 interface Ethernet1
     description "To PE3 Ethernet2"
     no switchport
@@ -27,7 +30,13 @@ interface Ethernet4
 interface Loopback0
    ip address 10.0.0.1/32
 !
+interface Management0
+   vrf management
+!
 ip routing
+no ip routing vrf management
+!
+ip route vrf management 0.0.0.0/0 172.20.20.1
 !
 router ospf 1
    router-id 10.0.0.1
