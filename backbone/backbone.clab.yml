@@ -1,0 +1,55 @@
+name: device_onboarding_lab
+
+topology:
+  nodes:
+    PE1:
+        kind: "ceos"
+        image: "ceos:${CEOS_VERSION}"
+        startup-config: "configs/PE1.txt"
+    P1 :
+        kind: "ceos"
+        image: "ceos:${CEOS_VERSION}"
+        startup-config: "configs/P1.txt"
+    P2 :
+        kind: "ceos"
+        image: "ceos:${CEOS_VERSION}"
+        startup-config: "configs/P2.txt"
+    P3 :
+        kind: "ceos"
+        image: "ceos:${CEOS_VERSION}"
+        startup-config: "configs/P3.txt"
+    P4 :
+        kind: "ceos"
+        image: "ceos:${CEOS_VERSION}"
+        startup-config: "configs/P4.txt"
+    P5 :
+        kind: "ceos"
+        image: "ceos:${CEOS_VERSION}"
+        startup-config: "configs/P5.txt"
+    P6 :
+        kind: "ceos"
+        image: "ceos:${CEOS_VERSION}"
+        startup-config: "configs/P6.txt"
+    PE2:
+        kind: "ceos"
+        image: "ceos:${CEOS_VERSION}"
+        startup-config: "configs/PE2.txt"
+    PE3:
+        kind: "ceos"
+        image: "ceos:${CEOS_VERSION}"
+        startup-config: "configs/PE3.txt"
+
+  links:
+    - endpoints: ["PE1:eth1", "P1:eth4"]
+    - endpoints: ["PE1:eth2", "P5:eth3"]
+    - endpoints: ["P1:eth2", "P2:eth3"]
+    - endpoints: ["P1:eth3", "P3:eth1"]
+    - endpoints: ["P3:eth2", "P4:eth3"]
+    - endpoints: ["P3:eth3", "P5:eth1"]
+    - endpoints: ["P5:eth2", "P6:eth3"]
+    - endpoints: ["P2:eth2", "P4:eth1"]
+    - endpoints: ["P2:eth1", "PE2:eth2"]
+    - endpoints: ["P6:eth1", "P4:eth2"]
+    - endpoints: ["P6:eth2", "PE2:eth1"]
+    - endpoints: ["PE3:eth2", "P1:eth1"]
+    - endpoints: ["PE3:eth1", "P2:eth4"]

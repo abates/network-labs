@@ -1,0 +1,34 @@
+
+!
+username nautobot privilege 15 secret nautobot
+!
+hostname P2
+!
+interface Ethernet1
+    description "To PE2 Ethernet2"
+    no switchport
+    ip address 10.1.0.16/31
+!
+interface Ethernet2
+    description "To P4 Ethernet1"
+    no switchport
+    ip address 10.1.0.14/31
+!
+interface Ethernet3
+    description "To P1 Ethernet2"
+    no switchport
+    ip address 10.1.0.5/31
+!
+interface Ethernet4
+    description "To PE3 Ethernet1"
+    no switchport
+    ip address 10.1.0.25/31
+!
+interface Loopback0
+   ip address 10.0.0.2/32
+!
+ip routing
+!
+router ospf 1
+   router-id 10.0.0.2
+   network 10.0.0.0/15 area 0.0.0.0
