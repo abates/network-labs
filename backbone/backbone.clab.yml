@@ -4,39 +4,39 @@ topology:
   nodes:
     PE1:
         kind: "ceos"
-        image: "ceos:${CEOS_VERSION}"
+        image: "ceos:latest"
         startup-config: "configs/PE1.txt"
     P1 :
         kind: "ceos"
-        image: "ceos:${CEOS_VERSION}"
+        image: "ceos:latest"
         startup-config: "configs/P1.txt"
     P2 :
         kind: "ceos"
-        image: "ceos:${CEOS_VERSION}"
+        image: "ceos:latest"
         startup-config: "configs/P2.txt"
     P3 :
         kind: "ceos"
-        image: "ceos:${CEOS_VERSION}"
+        image: "ceos:latest"
         startup-config: "configs/P3.txt"
     P4 :
         kind: "ceos"
-        image: "ceos:${CEOS_VERSION}"
+        image: "ceos:latest"
         startup-config: "configs/P4.txt"
     P5 :
         kind: "ceos"
-        image: "ceos:${CEOS_VERSION}"
+        image: "ceos:latest"
         startup-config: "configs/P5.txt"
     P6 :
         kind: "ceos"
-        image: "ceos:${CEOS_VERSION}"
+        image: "ceos:latest"
         startup-config: "configs/P6.txt"
     PE2:
         kind: "ceos"
-        image: "ceos:${CEOS_VERSION}"
+        image: "ceos:latest"
         startup-config: "configs/PE2.txt"
     PE3:
         kind: "ceos"
-        image: "ceos:${CEOS_VERSION}"
+        image: "ceos:latest"
         startup-config: "configs/PE3.txt"
 
   links:
