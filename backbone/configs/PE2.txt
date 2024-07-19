@@ -1,6 +1,5 @@
-
 !
-username nautobot privilege 15 secret nautobot
+username nautobot privilege 15 secret $6$vZ.BLLxZukUsRL..$D9tDwLonNOKOzD88VMo1a3pzI2c0y62vcvNc2z..WPl7stbzIAWVHLSne.yLxgANw39lXvbRa9jcAX1XarQQN0
 !
 hostname PE2
 !
